@@ -1,0 +1,49 @@
+/**
+ * 查询文本转向量。
+ *
+ * Qwen3-Embedding 检索场景：
+ * Query 侧增加任务 instruction，
+ * 案件 Document 侧保持原始 embeddingText。
+ */
+public List<Double> embedQuery(
+        String query) {
+
+    if (!SearchValueUtil.hasText(query)) {
+
+        throw new IllegalArgumentException(
+                "semanticQuery不能为空"
+        );
+    }
+
+
+    String instruction =
+            "Given a Chinese prosecutorial case search query, "
+                    + "retrieve case fact descriptions that satisfy all "
+                    + "factual conditions expressed in the query.";
+
+
+    String queryText =
+            "Instruct: "
+                    + instruction
+                    + "\nQuery: "
+                    + query.trim();
+
+
+    System.out.println(
+            "[AI检索] Embedding原始查询="
+                    + query.trim()
+    );
+
+    System.out.println(
+            "[AI检索] Embedding查询文本="
+                    + queryText
+    );
+
+
+    return embed(
+            queryText
+    );
+}
+
+
+
