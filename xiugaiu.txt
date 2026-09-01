@@ -47,3 +47,24 @@ public List<Double> embedQuery(
 
 
 
+
+
+
+
+// =========================================
+// 3. semanticQuery -> Query Embedding
+// =========================================
+
+List<Double> vector =
+
+        embeddingService
+                .embedQuery(
+                        semanticQuery
+                );
+				
+				
+				
+				
+
+
+
